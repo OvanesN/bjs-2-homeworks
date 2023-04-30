@@ -1,20 +1,18 @@
 "use strict"
 
 function solveEquation(a, b, c) {
-  let arr = [];
-  let d = (b ** 2) - (4 * a * c);
-  let x = (-b + Math.sqrt(d)) / (2 * a);
-  let y = (-b - Math.sqrt(d)) / (2 * a);
-  let z = -b / (2 * a);
+  const arr = [];
+  const discriminant = (b ** 2) - (4 * a * c);
+  const xValue = (-b + Math.sqrt(discriminant)) / (2 * a);
+  const yValue = (-b - Math.sqrt(discriminant)) / (2 * a);
+  const zValue = -b / (2 * a);
 
 
-  if (d > 0) {
-    arr.push(x);
-    arr.push(y);
-  } else if (d === 0) {
-    arr.push(z);
-  } else {
-    arr = [];
+  if (discriminant > 0) {
+    arr.push(xValue);
+    arr.push(yValue);
+  } else if (discriminant === 0) {
+    arr.push(zValue);
   }
 
   return arr;
@@ -22,6 +20,12 @@ function solveEquation(a, b, c) {
 
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
+
+  percent = Number(percent);
+  contribution = Number(contribution);
+  amount = Number(amount);
+  countMonths = Number(countMonths);
+  
   let percentMonth = (percent / 100) / 12;
   let sumCredit = amount - contribution;
   let payment = sumCredit * (percentMonth + (percentMonth / (((1 + percentMonth) ** countMonths) - 1)));
